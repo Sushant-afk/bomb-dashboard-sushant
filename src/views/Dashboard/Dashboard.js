@@ -32,7 +32,7 @@ const Dashboard = () => {
           </Helmet>
           <Container maxWidth="lg">
             <Box mt={5}>
-              <FinanceSummary/>
+              {/* <FinanceSummary/> */}
               <BoardroomDiv/>
             </Box>
           </Container>
