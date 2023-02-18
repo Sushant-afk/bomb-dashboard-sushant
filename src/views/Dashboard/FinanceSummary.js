@@ -26,7 +26,7 @@ const useStyles = makeStyles((theme) => ({
     paper: {
       padding: theme.spacing(2),
       textAlign: 'center',
-    //   color: theme.palette.text.secondary,
+      color: theme.palette.text.secondary,
     },
 }));
 
@@ -68,11 +68,11 @@ const FinanceSummary = () => {
     return (
     <div className={styles.root}>
     <Grid container spacing={2}>
-     <Grid item xs={12}>
+     <Grid item xs={12} component={Paper}>
      <Typography style={{ textTransform: 'uppercase', color: '#ffffff' }}>Bomb Finance summary</Typography>
      </Grid>
-     <Grid item xs={9} >
-        <TableContainer component={Paper}>
+     <Grid item xs={9} component={Paper}>
+        <TableContainer>
         <Table aria-label="simple table">
             <TableHead>
             <TableRow>
