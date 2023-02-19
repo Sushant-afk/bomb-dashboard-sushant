@@ -35,10 +35,12 @@ export const useStyles = makeStyles((theme) => ({
         fontSize: '18px',
         color: 'black',
     },
-    board: {
+    boardRoom: {
+        backgroundColor: 'red',
         border: '1px solid #728CDF',
-        backgroundColor: '#23284BBF',
-        opacity: '75%',
+        backgroundColor: 'rgba(35, 40, 75, 0.75)',
+        borderRadius: '10px',
+        padding: '8px',
         color: 'white'
     }
 }));

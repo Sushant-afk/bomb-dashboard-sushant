@@ -67,28 +67,37 @@ const BoardroomSummary: React.FC = () => {
                <Grid item xs={12} className={styles.items}> <div className={styles.invNow}> Invest Now </div> </Grid>
                <Grid item xs={12} sm={6} className={styles.items} style={{ paddingRight: "8px" }}> <div className={styles.div3}> <b> Chat on discord </b> </div> </Grid>
                <Grid item xs={12} sm={6} className={styles.items} style={{ paddingLeft: "8px" }}> <div className={styles.div3}> <b> Read docs </b> </div> </Grid>
-               <Grid container style={{ border:'0.5px solid black', backgroundColor: "rgba(35, 40, 75, 0.75)", backdropFilter:"blur(5px)", WebkitBackdropFilter: "blur(5px)", borderRadius:"10px"}}>
-                <Grid className={styles.board} item xs={8}> 
+               <Grid container className={styles.boardRoom}>
+                <Grid item xs={8}> 
                  <div style={{display: 'flex', textAlign: 'left'}}>
                  <TokenSymbol symbol="BSHARE" />
                  <p> <span style={{ fontSize: '18px'}}> <b> Boardroom </b> </span> <br/> <span style={{ fontSize: '14px' }}> Stake BSHARE and earn BOMB every epoch </span> </p>
                  </div>
                 </Grid>
-                <Grid className={styles.board} item xs={4}> 
+                <Grid item xs={4}> 
                  <div> TVL: $1,034,101 </div>
                 </Grid>
-                <Grid className={styles.board} item xs={2}> Daily returns 2%  </Grid>
-                <Grid className={styles.board} item xs={2}>
+                <hr style={{ color: 'white', width: '90%', height: '0.3' }}/>
+                <Grid item xs={12}> <p style={{color:'white', textAlign: 'right'}}> Total Staked: {getDisplayBalance(totalStaked)} </p> </Grid>
+                <Grid item xs={2}>  
+                 <div style={{ marginTop: '15px' }}>
+                  Daily Returns: <br/> 2.3%
+                 </div> 
+                </Grid>
+                <Grid item xs={2}>
+                 <div style={{ marginTop: '15px' }}>
                     Your stake: <br/> BSHARE {getDisplayBalance(stakedBalance)} <br/>
                     $ {tokenPriceInDollars}
+                 </div>
                 </Grid>
-                <Grid className={styles.board} item xs={2}> 
-                    Your earnings: <br/> BSHARE {getDisplayBalance(earnings)} <br/>
-                    $ {earnedInDollars}
+                <Grid item xs={2}> 
+                    <div style={{ marginTop: '15px' }}>
+                     Your earnings: <br/> BSHARE {getDisplayBalance(earnings)} <br/>
+                     $ {earnedInDollars}
+                    </div>
                 </Grid>
-                <Grid className={styles.board} item xs={6}> 
+                <Grid item xs={6}> 
                  <div>
-                  <p style={{color:'white'}}> Total Staked: {getDisplayBalance(totalStaked)} </p>
                   <Button onClick={onPresentDeposit} variant="contained" color="default" style={{margin:'3px'}} endIcon={<ArrowUpwardRounded />}> Deposit </Button>
                   <Button onClick={onPresentWithdraw} variant="contained" color="default" style={{margin:'3px'}} endIcon={<ArrowDownwardRounded />}> Withdraw </Button>
                   <Button variant="contained" color="default" style={{margin:'3px'}} endIcon={<ArrowUpwardRounded />}> Claim Rewards </Button> 

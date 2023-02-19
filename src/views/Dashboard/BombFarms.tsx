@@ -1,6 +1,20 @@
 import { Button, Grid } from '@material-ui/core';
-import React from 'react';
+import React, { useMemo } from 'react';
 import { useStyles } from './utils';
+
+import useEarnings from '../../hooks/useEarnings';
+import useHarvest from '../../hooks/useHarvest';
+
+import {getDisplayBalance} from '../../utils/formatBalance';
+import TokenSymbol from '../../components/TokenSymbol';
+import {Bank} from '../../bomb-finance';
+import useBombStats from '../../hooks/useBombStats';
+import useShareStats from '../../hooks/usebShareStats';
+import useBank from '../../hooks/useBank';
+
+interface HarvestProps {
+  bank: Bank;
+}
 
 type PropsType = {
   name: String;
@@ -14,9 +28,20 @@ type PropsType = {
 
 const BombFarms: React.FC = () => {
   const styles = useStyles();
+
+  //bomb earnings
+  // const bombBank = useBank('BombBtcbLPBShareRewardPool');
+  // const earnings = useEarnings(bombBank.contract, bombBank.earnTokenName, bombBank.poolId);
+  // const bombStats = useBombStats();
+  // const tShareStats = useShareStats();
+  // const tokenStats = bombBank.earnTokenName === 'BSHARE' ? tShareStats : bombStats;
+  // const tokenPriceInDollars = useMemo(() => (tokenStats ? Number(tokenStats.priceInDollars).toFixed(2) : null), [tokenStats]);
+  // const bombEarnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
+  // const bombBalanceDisplay = getDisplayBalance(earnings);
+
   return (
     <div className={styles.root}>
-      <Grid container className={styles.board}>
+      <Grid container className={styles.boardRoom}>
         <Grid item xs={9} className={styles.items}> 
           <div>
             <p style={{ fontSize: '20px' }}> Bomb Farms </p>
@@ -36,27 +61,27 @@ const BombFarms: React.FC = () => {
 const TokenCard: React.FC<PropsType> = ({ name, tvl, dailyReturns, yourStakeBshare, yourStakeDollar, earnedDollar, earnedBshare }) => {
   const styles = useStyles();
   return (
-    <Grid container>
-      <Grid item xs={8} style={{backgroundColor:'red', fontSize: '22px'}}> {name} </Grid>
-      <Grid item xs={4} style={{backgroundColor:'green', textAlign: 'right'}}> TVL: {tvl} </Grid>
+    <Grid container className={styles.boardRoom}>
+      <Grid item xs={8} style={{ fontSize: '22px'}}> {name} </Grid>
+      <Grid item xs={4} style={{ textAlign: 'right'}}> TVL: {tvl} </Grid>
       <Grid item xs={2} className={styles.items}> 
         <div>
           Daily Returns: <br/> {dailyReturns}
         </div> 
       </Grid>
-      <Grid item xs={2} className={styles.board}> 
+      <Grid item xs={2} > 
         <div>
           Your Stake: <br/> {yourStakeBshare} <br/> {yourStakeDollar}
         </div> 
       </Grid>
-      <Grid item xs={2} className={styles.board}>
+      <Grid item xs={2} >
         <div>
           Earned: <br/> {earnedBshare} <br/> {earnedDollar}
         </div>
       </Grid>
-      <Grid item xs={6} className={styles.board}>
-        <Button variant="contained" color="default"> Deposit </Button>
-        <Button variant="contained" color="default"> Withdraw </Button>
+      <Grid item xs={6} >
+        <Button variant="contained" color="default" style={{marginRight:'10px'}}> Deposit </Button>
+        <Button variant="contained" color="default" style={{marginRight:'10px'}}> Withdraw </Button>
         <Button variant="contained" color="default"> Claim Rewards </Button>
       </Grid>
     </Grid>
