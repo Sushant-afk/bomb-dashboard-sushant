@@ -8,9 +8,10 @@ import {getDisplayBalance} from '../../utils/formatBalance';
 import useBombStats from '../../hooks/useBombStats';
 import useShareStats from '../../hooks/usebShareStats';
 import useBank from '../../hooks/useBank';
-import useTokenBalance from '../../hooks/useTokenBalance';
 import useStakedBalance from '../../hooks/useStakedBalance';
 import useStakedTokenPriceInDollars from '../../hooks/useStakedTokenPriceInDollars';
+import TokenSymbol from '../../components/TokenSymbol';
+
 
 type PropsType = {
   name: String;
@@ -34,14 +35,14 @@ function useFun1 (bankId: string): [String, String] {
 
 
 // temporary custom hook to return stakings from any bank
-function useFun2(bankId: string) {
+function useFun2(bankId: string): [String, String] {
   const bank = useBank(bankId);
   const stakedBalance = useStakedBalance(bank?.contract, bank?.poolId);
   const stakedTokenPriceInDollars = useStakedTokenPriceInDollars(bank?.depositTokenName, bank?.depositToken);
   const tokenPriceInDollars = useMemo(() => (stakedTokenPriceInDollars ? stakedTokenPriceInDollars : null), [stakedTokenPriceInDollars]);
   const yourStakeDollar = (Number(tokenPriceInDollars) * Number(getDisplayBalance(stakedBalance, bank?.depositToken.decimal))).toFixed(2);
   const yourStakeBshare = getDisplayBalance(stakedBalance, bank?.depositToken.decimal);
-  return { yourStakeDollar, yourStakeBshare };
+  return [ yourStakeDollar, yourStakeBshare ];
 }
 
 const BombFarms: React.FC = () => {
@@ -51,8 +52,8 @@ const BombFarms: React.FC = () => {
       <Grid container className={styles.boardRoom}>
         <Grid item xs={9} className={styles.items}> 
           <div>
-            <p style={{ fontSize: '20px' }}> Bomb Farms </p>
-            <p style={{ fontSize: '14px' }}> Stake your LP tokens in our farms to earning $BSHARE </p>
+            <span style={{ fontSize: '20px' }}> Bomb Farms </span><br/>
+            <span style={{ fontSize: '14px' }}> Stake your LP tokens in our farms to earning $BSHARE </span>
           </div> 
         </Grid>
         <Grid item xs={3} className={styles.items} style={{ textAlign: 'right' }}>
@@ -68,11 +69,15 @@ const BombFarms: React.FC = () => {
 const TokenCard: React.FC<PropsType> = ({ name, tvl, dailyReturns, bankId }) => {
   const styles = useStyles();
   const [ earnedInDollars, earnedBshare ] = useFun1(bankId);
-  const { yourStakeDollar, yourStakeBshare } = useFun2(bankId);
-  // const yourStakeDollar=100, yourStakeBshare=5;
+  const [ yourStakeDollar, yourStakeBshare ] = useFun2(bankId);
   return (
-    <Grid container className={styles.boardRoom}>
-      <Grid item xs={8} style={{ fontSize: '22px'}}> {name} </Grid>
+    <Grid container style={{ borderBottom: '1px solid #728CDF', paddingTop: '20px', paddingBottom: '10px' }}>
+      <Grid item xs={8} style={{ fontSize: '22px', marginBottom: '10px'}}> 
+       <div style={{ display:'flex' }}>
+       <TokenSymbol symbol={name+'-LP'} size={38}/>
+       <p> {name} </p>
+       </div>
+      </Grid>
       <Grid item xs={4} style={{ textAlign: 'right'}}> TVL: {tvl} </Grid>
       <Grid item xs={2} style={{ fontSize: '14px' }}> 
         <div>

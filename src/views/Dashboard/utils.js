@@ -27,13 +27,15 @@ export const useStyles = makeStyles((theme) => ({
         color: 'white',
         border: '0.3px solid #E41A1A',
         padding: '8px',
-        fontSize: '24px'
+        fontSize: '24px',
+        textAlign: 'center'
     },
     div3: {
         padding: '8px',
         backgroundColor: 'rgba(255, 255, 255, 0.5)',
         fontSize: '18px',
         color: 'black',
+        textAlign: 'center'
     },
     boardRoom: {
         backgroundColor: 'red',
