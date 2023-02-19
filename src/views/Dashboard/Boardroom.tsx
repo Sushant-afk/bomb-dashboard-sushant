@@ -79,24 +79,24 @@ const BoardroomSummary: React.FC = () => {
                 </Grid>
                 <hr style={{ color: 'white', width: '90%', height: '0.3' }}/>
                 <Grid item xs={12}> <p style={{color:'white', textAlign: 'right'}}> Total Staked: {getDisplayBalance(totalStaked)} </p> </Grid>
-                <Grid item xs={2}>  
+                <Grid item xs={2} style={{ fontSize: '14px' }}>  
                  <div style={{ marginTop: '15px' }}>
                   Daily Returns: <br/> 2.3%
                  </div> 
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={3} style={{ fontSize: '14px' }}>
                  <div style={{ marginTop: '15px' }}>
                     Your stake: <br/> BSHARE {getDisplayBalance(stakedBalance)} <br/>
                     $ {tokenPriceInDollars}
                  </div>
                 </Grid>
-                <Grid item xs={2}> 
+                <Grid item xs={3} style={{ fontSize: '14px' }}> 
                     <div style={{ marginTop: '15px' }}>
                      Your earnings: <br/> BSHARE {getDisplayBalance(earnings)} <br/>
                      $ {earnedInDollars}
                     </div>
                 </Grid>
-                <Grid item xs={6}> 
+                <Grid item xs={4} style={{ textAlign: 'right' }}> 
                  <div>
                   <Button onClick={onPresentDeposit} variant="contained" color="default" style={{margin:'3px'}} endIcon={<ArrowUpwardRounded />}> Deposit </Button>
                   <Button onClick={onPresentWithdraw} variant="contained" color="default" style={{margin:'3px'}} endIcon={<ArrowDownwardRounded />}> Withdraw </Button>

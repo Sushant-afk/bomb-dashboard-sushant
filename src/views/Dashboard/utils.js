@@ -4,7 +4,7 @@ export const useStyles = makeStyles((theme) => ({
       flexGrow: 1,
     },
     lrBoxes: {
-        textAlign: 'center',
+        // textAlign: 'center',
     },
     newsBox: {
         color: 'white',

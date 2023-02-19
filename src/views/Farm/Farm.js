@@ -27,7 +27,6 @@ const TITLE = 'bomb.money | Farms';
 
 const Farm = () => {
   const [banks] = useBanks();
-  console.log(banks);
   const { path } = useRouteMatch();
   const activeBanks = banks.filter((bank) => !bank.finished);
   return (

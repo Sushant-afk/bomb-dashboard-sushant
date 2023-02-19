@@ -33,8 +33,8 @@ const Dashboard = () => {
           </Helmet>
           <Container maxWidth="lg">
             <Box mt={5}>
-              <div style={{ marginBottom: '30px' }}> <FinanceSummary/> </div>
-              <div style={{ marginBottom: '30px' }}> <BoardroomSummary/> </div>
+              <div style={{ marginBottom: '45px' }}> <FinanceSummary/> </div>
+              <div style={{ marginBottom: '45px' }}> <BoardroomSummary/> </div>
               <BombFarms/>
             </Box>
           </Container>
