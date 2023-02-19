@@ -16,6 +16,7 @@ import useBombStats from '../../../hooks/useBombStats';
 import {getDisplayBalance} from '../../../utils/formatBalance';
 
 const Harvest: React.FC = () => {
+
   const bombStats = useBombStats();
   const {onReward} = useHarvestFromBoardroom();
   const earnings = useEarningsOnBoardroom();
@@ -27,6 +28,8 @@ const Harvest: React.FC = () => {
   );
 
   const earnedInDollars = (Number(tokenPriceInDollars) * Number(getDisplayBalance(earnings))).toFixed(2);
+
+  console.log("xxxxxx", earnedInDollars)
 
   const {from, to} = useClaimRewardTimerBoardroom();
 

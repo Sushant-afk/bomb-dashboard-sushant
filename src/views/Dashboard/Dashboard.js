@@ -7,7 +7,8 @@ import { Helmet } from 'react-helmet';
 import { createGlobalStyle } from 'styled-components';
 import HomeImage from '../../assets/img/background.jpg';
 import FinanceSummary from './FinanceSummary';
-import BoardroomDiv from './Boardroom';
+import BoardroomSummary from './Boardroom';
+import BombFarms from './BombFarms';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -32,8 +33,9 @@ const Dashboard = () => {
           </Helmet>
           <Container maxWidth="lg">
             <Box mt={5}>
-              {/* <FinanceSummary/> */}
-              <BoardroomDiv/>
+              <div style={{ marginBottom: '30px' }}> <FinanceSummary/> </div>
+              <div style={{ marginBottom: '30px' }}> <BoardroomSummary/> </div>
+              <BombFarms/>
             </Box>
           </Container>
         </Route>
