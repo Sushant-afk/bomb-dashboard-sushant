@@ -9,6 +9,7 @@ import HomeImage from '../../assets/img/background.jpg';
 import FinanceSummary from './FinanceSummary';
 import BoardroomSummary from './Boardroom';
 import BombFarms from './BombFarms';
+import Bonds from './Bonds';
 
 const BackgroundImage = createGlobalStyle`
   body {
@@ -35,7 +36,8 @@ const Dashboard = () => {
             <Box mt={5}>
               <div style={{ marginBottom: '45px' }}> <FinanceSummary/> </div>
               <div style={{ marginBottom: '45px' }}> <BoardroomSummary/> </div>
-              <BombFarms/>
+              <div style={{ marginBottom: '45px' }}> <BombFarms/> </div>
+              <Bonds/>
             </Box>
           </Container>
         </Route>
